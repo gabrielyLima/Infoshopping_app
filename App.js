@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
-
+import { API } from 'constants'
 export default class FetchExample extends React.Component {
 
   constructor(props){
@@ -9,13 +9,13 @@ export default class FetchExample extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('https://facebook.github.io/react-native/movies.json')
+    return fetch(API.url+'/gerente/servicos')
       .then((response) => response.json())
       .then((responseJson) => {
           
         this.setState({
           isLoading: false,
-          dataSource: responseJson.movies,
+          dataSource: responseJson
         }, function(){
 
         });
