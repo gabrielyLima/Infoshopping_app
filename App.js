@@ -1,51 +1,13 @@
-import React from 'react';
-import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
-import { API } from 'constants'
-export default class FetchExample extends React.Component {
+import React, { Component } from 'react';
+import Routes from '@components/Routes';
 
-  constructor(props){
-    super(props);
-    this.state ={ isLoading: true}
-  }
-
-  componentDidMount(){
-    return fetch(API.url+'/gerente/servicos')
-      .then((response) => response.json())
-      .then((responseJson) => {
-          
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson
-        }, function(){
-
-        });
-
-      })
-      .catch((error) =>{
-        console.error(error);
-      });
-  }
-
-
+class App extends Component {
 
   render(){
-
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
-      )
-    }
-
-    return(
-      <View style={{flex: 1, paddingTop:20}}>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.title}, {item.releaseYear}</Text>}
-          keyExtractor={(item, index) => index}
-        />
-      </View>
-    );
+    return (
+      <Routes />
+    )
   }
 }
+
+export default App
