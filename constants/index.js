@@ -6,5 +6,6 @@ export const API = {
 export const COLORS = {
     primaryColor: '#3F51B5',
     darkerPrimaryColor: '#303F9F',
-    background: '#EFEFEF'
+    background: '#EFEFEF',
+    divider: '#EFEFEF'
 }

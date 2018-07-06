@@ -4,30 +4,55 @@ import {
     Text,
     View,
     FlatList,
-    ScrollView
+    ScrollView,
+    Dimensions
 } from 'react-native';
 
 import {
     getTheme,
+    MKSpinner,
+    MKButton,
+    MKColor
   } from 'react-native-material-kit';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Actions } from 'react-native-router-flux';
 import { listarProdutos } from '@api/produtos';
+import ItemProduto from '@components/ItemProduto';
 
 import { COLORS } from '@constants';
 
+const {width,  height} = Dimensions.get('window');
 const theme = getTheme();
+const fabSize = Math.min(width, height)/8
+
 export default class TabProdutos extends Component{
 
     state = {
-        products: []
+        products: [],
+        isLoading: false,
+        width,
+        height
+    };
+
+    constructor(props){
+        super(props);
+        Dimensions.addEventListener('change', () => {
+            const {width,  height} = Dimensions.get('window');
+            this.setState({ width, height });
+        });
     }
 
     componentDidMount(){
+        this.setState({ isLoading: true });
         listarProdutos()
             .then(response => {
                 response.json()
                     .then(data => {
                         if(data){
-                            this.setState({ products: data });
+                            this.setState({
+                                products: data,
+                                isLoading: false
+                            });
                         }
                     })
             })
@@ -35,24 +60,38 @@ export default class TabProdutos extends Component{
 
     renderItem({item, index}){
         return (
-            <View style={[theme.cardStyle, styles.productItem]}>
-                <View>
-                    <Text>{item.nome}</Text>
-                    <Text>R$ {parseFloat(item.preco).toFixed(2).replace('.', ',')}</Text>
-                </View>
-                <View>
-                </View>
+            <View style={[theme.cardStyle, styles.card]}>
+                <ItemProduto {...item} />
             </View>
         )
     }
 
     render(){
+        const { width, height } = this.state;
         return (
-            <ScrollView style={styles.container}>
-                <FlatList
-                    renderItem={this.renderItem}
-                    data={this.state.products}
-                />
+            <ScrollView contentContainerStyle={styles.container}>
+                {
+                    this.state.isLoading?
+                    <MKSpinner  style={{ alignSelf: 'center', margin: 30 }}/>
+                    :
+                    <FlatList
+                        renderItem={this.renderItem}
+                        data={this.state.products}
+                    />
+                }
+                <MKButton
+                    style={styles.addFAB}
+                    backgroundColor={MKColor.Amber}
+                    fab={true}
+                    elevation={10}
+                    onPress={() => {
+                        Actions.CadastroProduto();
+                    }}
+                    width={60}
+                    height={60}
+                >
+                <Icon name='add' size={30} color='white'/>
+                </MKButton>
             </ScrollView>
         )
     }
@@ -60,11 +99,19 @@ export default class TabProdutos extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 10,
+        flex: 1,
         backgroundColor: COLORS.background
     },
-    productItem: {
-        marginVertical: 5,
-        padding: 5
+    card: {
+        margin: 5,
+        padding: 7,
+        elevation: 3
+    },
+    addFAB: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        right: 30,
+        bottom: 30
     }
 });
