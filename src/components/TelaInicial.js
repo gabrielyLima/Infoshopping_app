@@ -7,10 +7,16 @@ import {
 
 import MaterialTabs from 'react-native-material-tabs';
 import TabProdutos from '@components/TabProdutos';
+import TabServicos from '@components/TabServicos';
+import TabFuncionarios from '@components/TabFuncionarios';
+import TabUsuarios from '@components/TabUsuarios'
 import { COLORS } from '@constants';
 
 const tabs = [
-    <TabProdutos />
+    <TabProdutos />,
+    <TabServicos />,
+    <TabFuncionarios/>,
+    <TabUsuarios/>
 ]
 export default class TelaInicial extends Component{
     
@@ -27,7 +33,7 @@ export default class TelaInicial extends Component{
             <SafeAreaView style={styles.container}>
                 <StatusBar backgroundColor={COLORS.darkerPrimaryColor}/>
                 <MaterialTabs
-                    items={['Produtos', 'Clientes', 'Serviços', 'Funcionários']}
+                    items={['Produtos', 'Serviços', 'Funcionários', 'Usuarios']}
                     selectedIndex={this.state.selectedTab}
                     onChange={this.setTab}
                     barColor={COLORS.primaryColor}
