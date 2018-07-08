@@ -42,7 +42,7 @@ export default class TabProdutos extends Component{
         });
     }
 
-    componentDidMount(){
+    fetchProducts(){
         this.setState({ isLoading: true });
         listarProdutos()
             .then(response => {
@@ -51,11 +51,23 @@ export default class TabProdutos extends Component{
                         if(data){
                             this.setState({
                                 products: data,
-                                isLoading: false
+                                isLoading: false,
+                                shouldFetch: false
                             });
                         }
                     })
             })
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+      if(nextProps.shouldFetch){
+          this.fetchProducts();
+      }
+    }
+    
+
+    componentDidMount(){
+        this.fetchProducts();
     }
 
     renderItem({item, index}){
@@ -103,7 +115,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.background
     },
     card: {
-        margin: 5,
+        marginVertical: 5,
+        marginHorizontal: 10,
         padding: 7,
         elevation: 3
     },

@@ -11,7 +11,7 @@ export default () => (
         headerTintColor="#fff"
     >
         <Stack>
-            <Scene component={TelaInicial} title="InfoShopping App" key="TelaInicial"/>
+            <Scene component={TelaInicial} title="InfoShopping App" key="TelaInicial" type="reset"/>
             <Scene component={CadastroProduto} title="Cadastrar Produto" key="CadastroProduto" />
         </Stack>
     </Router>
