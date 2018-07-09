@@ -9,6 +9,7 @@ import OpcaoConsultaProduto from '@components/OpcaoConsultaProduto'
 import OpcaoConsultaServico from '@components/OpcaoConsultaServico';
 import OpcaoConsultaUsuario from '@components/OpcaoConsultaUsuario';
 import OpcaoConsultaFuncionario from '@components/OpcaoConsultaFuncionario';
+import TelaTemporaria from '@components/TelaTemporaria';
 import { COLORS } from '@constants';
 
 export default () => (
@@ -26,7 +27,8 @@ export default () => (
             <Scene component={OpcaoConsultaProduto} title="Opções de consulta de produtos" key="OpcaoConsultaProduto" />
             <Scene component={OpcaoConsultaFuncionario} title="Opções de consulta de funcionarios" key="OpcaoConsultaFuncionario" />
             <Scene component={OpcaoConsultaUsuario} title="Opções de consulta de usuarios" key="OpcaoConsultaUsuario" />
-            <Scene component={OpcaoConsultaServico} title="Opções de consulta de servicos" key="OpcaoConsultaServico" />
+            <Scene component={OpcaoConsultaServico} title="Opções de consulta de servicos" key="OpcaoConsultaServico" />            
+            <Scene component={TelaTemporaria} title="Consulta" key="TelaTemporaria" />
         </Stack>
     </Router>
 )

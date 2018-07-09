@@ -5,6 +5,7 @@ import {
     View,
     FlatList,
     ScrollView,
+    TouchableOpacity,
     Dimensions,
     Alert
 } from 'react-native';
@@ -30,7 +31,45 @@ export default class OpcaoConsultaFuncionario extends Component{
 
     render(){
         return(
-            <Text>{'aqui deverá ter uma lista de consultas'}</Text>
+            <ScrollView contentContainerStyle={styles.container}>
+                {    
+                <FlatList
+                    data={[
+                        {"name":"Lista salário que sejam maiores que 1100 (com comissão) e ordenados pelo nome do funcionário.",
+                            "id":  1},
+                        {"name":"horários de serviços futuros, agendados, para técnicos",
+                            "id":  2},
+                        {"name":"Comissão por funcionário",
+                            "id":  3}
+                        ]}
+                    renderItem={
+                        ({item}) =>
+                            <View style={[theme.cardStyle, styles.card]}>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        Actions.TelaTemporaria(item)
+                                    }}
+                                >
+                                    <Text>{item.name}</Text>
+                                </TouchableOpacity>
+                            </View>
+                        }
+                />
+                }
+            </ScrollView>
         )
     }
 } 
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: COLORS.background
+    },
+    card: {
+        marginVertical: 5,
+        marginHorizontal: 10,
+        padding: 7,
+        elevation: 3
+    }
+});

@@ -25,31 +25,21 @@ const {width,  height} = Dimensions.get('window');
 const theme = getTheme();
 const fabSize = Math.min(width, height)/8
 
-export default class OpcaoConsultaServico extends Component{
+export default class TelaTemporaria extends Component{
 
     render(){
+        const teste = this.props.id
         return(
             <ScrollView contentContainerStyle={styles.container}>
                 {
                     <FlatList
                         data={[
-                            {"name":"Valor total medio adquirido por dia num mês",
-                                "id":  7},
-                            {"name":"Valor medio adquirido no dia",
-                                "id":  8},
-                            {"name":"Descrição das análises com status ‘pendente’ e o id do funcionário responsável",
-                                "id":  9}, 
+                            {"id":teste}
                             ]}
                         renderItem={
                             ({item}) =>
                                 <View style={[theme.cardStyle, styles.card]}>
-                                    <TouchableOpacity
-                                        onPress={() => {
-                                            Actions.TelaTemporaria(item)
-                                        }}
-                                    >
-                                        <Text>{item.name}</Text>
-                                    </TouchableOpacity>
+                                        <Text>{item.id}</Text>
                                 </View>
                         }
                     />
