@@ -99,6 +99,9 @@ export default class TabFuncionarios extends Component{
                     onPress={() => {
                         Actions.CadastroFuncionario();
                     }}
+                    onLongPress={()=>{
+                        Actions.OpcaoConsultaFuncionario();
+                    }}
                     width={60}
                     height={60}
                 >
