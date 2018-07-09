@@ -30,6 +30,9 @@ export default class OpcaoConsultaProduto extends Component{
 
     render(){
         return(
+            // Nome e descrição dos produtos que não possuem ‘desmontavel’ na descrição
+            // Nome e preço dos produtos que tenham preço entre R$5,00 e R$40,00
+            // Quantidade de produtos vendidos por categoria
             <Text>{'aqui deverá ter uma lista de consultas'}</Text>
         )
     }

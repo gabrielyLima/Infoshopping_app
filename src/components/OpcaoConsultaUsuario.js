@@ -30,6 +30,8 @@ export default class OpcaoConsultaUsuario extends Component{
 
     render(){
         return(
+            // Nome dos clientes, categoria do produto análise e  com Cavalcante no nome que foram atendidos por um técnico com Dias no nome e que possuem 3 produtos de análise ou mais cadastrados.
+            // nome completo e telefone de todos os usuarios que tenham ‘Cavalcante’ no nome
             <Text>{'aqui deverá ter uma lista de consultas'}</Text>
         )
     }

@@ -30,6 +30,9 @@ export default class OpcaoConsultaFuncionario extends Component{
 
     render(){
         return(
+            // Lista salário que sejam maiores que 1100 (com comissão) e ordenados pelo nome do funcionário.
+            // horários de serviços futuros, agendados, para técnicos
+            // Comissão por funcionário
             <Text>{'aqui deverá ter uma lista de consultas'}</Text>
         )
     }

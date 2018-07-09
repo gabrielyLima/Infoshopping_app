@@ -30,6 +30,9 @@ export default class OpcaoConsultaServico extends Component{
 
     render(){
         return(
+            // valor total medio adquirido por dia num mês
+            // valor medio adquirido no dia
+            // Descrição das análises com status ‘pendente’ e o id do funcionário responsável
             <Text>{'aqui deverá ter uma lista de consultas'}</Text>
         )
     }
