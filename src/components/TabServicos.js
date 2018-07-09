@@ -99,6 +99,9 @@ export default class TabServicos extends Component{
                     onPress={() => {
                         Actions.CadastroServico();
                     }}
+                    onLongPress={()=>{
+                        Actions.OpcaoConsultaServico();
+                    }}
                     width={60}
                     height={60}
                 >
