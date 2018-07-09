@@ -31,7 +31,6 @@ export default class OpcaoConsultaFuncionario extends Component{
 
     render(){
         return(
-<<<<<<< HEAD
             <ScrollView contentContainerStyle={styles.container}>
                 {    
                 <FlatList
@@ -58,12 +57,6 @@ export default class OpcaoConsultaFuncionario extends Component{
                 />
                 }
             </ScrollView>
-=======
-            // Lista salário que sejam maiores que 1100 (com comissão) e ordenados pelo nome do funcionário.
-            // horários de serviços futuros, agendados, para técnicos
-            // Comissão por funcionário
-            <Text>{'aqui deverá ter uma lista de consultas'}</Text>
->>>>>>> f718bb68d52e82b01f232e36f30cf53061eb2ba5
         )
     }
 } 
