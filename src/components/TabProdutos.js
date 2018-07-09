@@ -5,7 +5,8 @@ import {
     View,
     FlatList,
     ScrollView,
-    Dimensions
+    Dimensions,
+    Alert
 } from 'react-native';
 
 import {
@@ -98,6 +99,9 @@ export default class TabProdutos extends Component{
                     elevation={10}
                     onPress={() => {
                         Actions.CadastroProduto();
+                    }}
+                    onLongPress={()=>{
+                        Actions.OpcaoConsultaProduto();
                     }}
                     width={60}
                     height={60}
