@@ -99,6 +99,9 @@ export default class TabUsuarios extends Component{
                     onPress={() => {
                         Actions.CadastroUsuario();
                     }}
+                    onLongPress={()=>{
+                        Actions.OpcaoConsultaUsuario();
+                    }}
                     width={60}
                     height={60}
                 >
